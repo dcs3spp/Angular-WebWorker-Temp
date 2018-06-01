@@ -1,4 +1,11 @@
-//importScripts('formdata-polyfill');
+importScripts('../bowser.min.js');
+
+var check =  (bowser.safari);
+var run = '';
+if (check) {
+  importScripts('../formdata.min.js');
+  run = ' running from Safari';
+}
 
 self.addEventListener('message', function(message) {
 
@@ -11,7 +18,7 @@ self.addEventListener('message', function(message) {
       form.append ('response', 'received');
 
       self.postMessage ( {
-        type: 'PONG', id: id, payload: {message: 'PONG'}, undefined
+        type: 'PONG', id: id, payload: {message: 'PONG' + run}, undefined
       }, undefined);
     }
   }

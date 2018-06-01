@@ -22,6 +22,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/webworkers/worker.js",
+              {"glob": "formdata.min.js", "input": "node_modules/formdata-polyfill", "output": "/"},
+              {"glob": "bowser.min.js", "input": "node_modules/bowser", "output": "/"},
             ],
             "styles": [
               {
