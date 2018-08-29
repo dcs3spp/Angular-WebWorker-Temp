@@ -4,30 +4,19 @@
     {{ title }}!
   </h1>
 </div>
-<h2>HTTP</h2>
-<ul>
-  <li>
-    <button mat-raised-button (click)="http_produce()">Http Produce</button>
-  </li>
-  <li>
-    <button mat-raised-button (click)="http_consume()">Http Consume</button>
-  </li>
-</ul>
-
-<h2>Web Socket</h2>
-<ul>
-  <li>
-    <button mat-raised-button (click)="wss_consume()">Web Socket Consume</button>
-  </li>
-</ul>
-
-<h2>Spawn Web Worker</h2>
-<ul>
-  <li>
-    <button mat-raised-button (click)="spawn_worker()">Spawn Web Worker</button>
-  </li>
-</ul>
 
 <div style="text-align:center">
-  <button mat-fab (click)="reset()">Reset</button>
+  <button mat-raised-button (click)="display_schedule()">Display Schedule</button>
 </div>
+
+<div style="text-align:center">
+  <button mat-raised-button (click)="reset()">Reset</button>
+</div>
+
+<div style="text-align:center">
+  <button mat-raised-button (click)="spawn_worker()">Spawn Web Worker</button>
+</div>
+
+
+<p-schedule>
+</p-schedule>

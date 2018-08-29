@@ -8,6 +8,10 @@ import { MatButtonModule, MatCheckboxModule }   from '@angular/material';
 import { NgModule }                             from '@angular/core';
 
 
+// import 'moment/moment.js';
+// import 'fullcalendar/dist/fullcalendar.js';
+import { ScheduleModule }                       from 'primeng/primeng';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +21,8 @@ import { NgModule }                             from '@angular/core';
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    ScheduleModule,
   ],
   providers: [
     HttpClient,
