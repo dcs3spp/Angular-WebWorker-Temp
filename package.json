@@ -27,6 +27,7 @@
     "formdata-polyfill": "^3.0.10",
     "fullcalendar": "^4.0.0-alpha",
     "moment": "^2.22.2",
+    "primeicons": "^1.0.0-beta.10",
     "primeng": "^6.1.2",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

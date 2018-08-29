@@ -20,22 +20,28 @@ export class AppComponent {
 
   static messageid: number = 1;
   private _nextMessageId : number = 0;
+
+  defaultDate: Date;
+  events: any[];
+  headerConfig: any;
+  messages: any[];
+  panelOpenState = false;
   title = 'Angular Scratch Apps';
+  panelWebWorkerState = false;
 
   public constructor (private zone : NgZone) {
+    this.messages = [];
   }
 
-  public display_schedule () {
-    console.log ("display_schedule() => trying to display full calendar component");
-  }
 
   public reset () {
-    console.log ("reset() => resetting web worker message id");
+    console.log ("reset() => clearing web worker messages received");
+    this.messages = [];
     AppComponent.messageid = 1;
   }
 
   public spawn_worker () {
-      console.log ("spawn_worker() => trying to spawn webworker and handle messages received");
+      console.log ("spawn_worker() => trying to spawn webworker and echo messages received");
       let _self = this;
       let worker_url : string = '/webworkers/worker.js';
       let w : Worker = new Worker (worker_url);
@@ -54,6 +60,7 @@ export class AppComponent {
         else if (responseType === 'PONG' && id === responseId) {
           _self.zone.run(() => {
             console.log (responsePayload);
+            _self.messages.push (JSON.stringify(responsePayload));
             w.terminate();
           });
         }

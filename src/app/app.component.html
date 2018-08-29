@@ -5,18 +5,51 @@
   </h1>
 </div>
 
-<div style="text-align:center">
-  <button mat-raised-button (click)="display_schedule()">Display Schedule</button>
-</div>
+<mat-accordion>
 
-<div style="text-align:center">
-  <button mat-raised-button (click)="reset()">Reset</button>
-</div>
+  <!-- Panel for displaying schedule control -->
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Primeng Schedule Calendar Control
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}. I display primeng schedule calendar.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p-schedule [events]="events?.events"
+      [header]="headerConfig"
+      [(defaultDate)]="defaultDate"
+      [eventLimit]="4"
+      [editable]="false"
+      [weekends]="false"
+      [aspectRatio]="1.8">
+    </p-schedule>
+  </mat-expansion-panel>
 
-<div style="text-align:center">
-  <button mat-raised-button (click)="spawn_worker()">Spawn Web Worker</button>
-</div>
-
-
-<p-schedule>
-</p-schedule>
+  <!-- Panel for echoing webworker messages received -->
+  <mat-expansion-panel (opened)="panelWebWorkerState = true"
+                        (closed)="panelWebWorkerState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Web Worker example
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelWebWorkerState ? 'open' : 'closed'}}. I spawn a web worker and echo PONG messages received.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+      <div layout="row" layout-align="start center" flex>
+        <button mat-raised-button (click)="spawn_worker()">Spawn Web Worker</button>
+        <span flex></span>
+        <button mat-fab (click)="reset()">Reset</button>
+      </div>
+    </section>
+    <mat-list>
+      <mat-list-item *ngFor="let message of messages">
+        <p>{{ message }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>
